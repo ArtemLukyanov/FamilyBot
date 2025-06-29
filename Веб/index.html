@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Clinic — запись</title>
+
+  <!-- Шрифт из макета -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.module.css" />
+</head>
+<body>
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Family Clinic</h1>
+    <p>Быстрая запись на приём к врачу</p>
+  </header>
+
+  <!-- Карточка формы -->
+  <main class="card">
+    <h2>Запись на приём</h2>
+
+    <form id="booking-form" novalidate>
+      <!-- Направление -->
+      <div class="form-group">
+        <label for="direction">Направление*</label>
+        <select id="direction" required>
+          <option value="">Выберите направление</option>
+          <option value="Консультация хирурга">Консультация хирурга</option>
+          <option value="Консультация ортопеда">Консультация ортопеда</option>
+          <option value="Консультация косметолога-дерматолога">Консультация косметолога-дерматолога</option>
+        </select>
+      </div>
+
+      <!-- Врач -->
+      <div class="form-group">
+        <label for="doctor-btn">Врач*</label>
+        <div class="doctor-select" id="doctor-select">
+          <button id="doctor-btn" type="button" class="doctor-btn" disabled>
+            Выберите врача <span class="arrow"></span>
+          </button>
+          <ul id="doctor-list" class="doctor-list hidden"></ul>
+        </div>
+        <input type="hidden" id="doctor" required />
+      </div>
+
+      <!-- Дата / Время -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="date">Дата*</label>
+          <input type="date" id="date" required />
+        </div>
+        <div class="form-group">
+          <label for="time">Время*</label>
+          <input type="time" id="time" required min="09:00" max="19:00" step="1800" />
+        </div>
+      </div>
+
+      <!-- ФИО -->
+      <div class="form-group">
+        <label for="fio">ФИО*</label>
+        <input type="text" id="fio" required placeholder="Фамилия Имя Отчество" minlength="6" />
+      </div>
+
+      <!-- Возраст / Телефон -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="age">Возраст*</label>
+          <input type="number" id="age" required placeholder="Введите возраст" min="1" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Телефон*</label>
+          <input type="tel" id="phone" required placeholder="+7 (___) ___-__-__" maxlength="18" />
+        </div>
+      </div>
+
+      <!-- Комментарий -->
+      <div class="form-group">
+        <label for="comment">Комментарий</label>
+        <textarea id="comment" rows="3" placeholder="Дополнительная информация"></textarea>
+      </div>
+
+      <button id="submitBtn" class="btn" type="submit" disabled>Записаться</button>
+    </form>
+  </main>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>

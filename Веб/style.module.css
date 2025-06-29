@@ -1,0 +1,133 @@
+/* ---------- основные переменные ---------- */
+:root{
+  --gradient:linear-gradient(135deg,#c9d6ff 0%,#e6c6ff 100%);
+  --card-bg:#fff;
+  --primary:#6c5bff;
+  --primary2:#7b5aff;
+  --border:#e2e8f0;
+  --text:#111827;
+  --radius:12px;
+  --shadow:0 12px 30px rgba(0,0,0,.08);
+  --placeholder:#94a3b8;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif;}
+body{
+  min-height:100vh;
+  background:var(--gradient);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:32px 16px;
+  color:var(--text);
+}
+
+/* --- HERO --- */
+.hero{text-align:center;margin-bottom:28px}
+.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600}
+.hero p{margin-top:6px;color:#374151}
+
+/* --- CARD --- */
+.card{
+  background:var(--card-bg);
+  width:100%;
+  max-width:480px;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:32px 28px 36px;
+}
+.card h2{
+  font-size:1.35rem;
+  font-weight:600;
+  text-align:center;
+  margin-bottom:24px;
+}
+
+/* --- FORM ELEMENTS --- */
+.form-group{margin-bottom:18px}
+.form-row{display:flex;gap:16px}
+.form-row .form-group{flex:1}
+
+label{display:block;margin-bottom:6px;font-weight:600}
+input,select,textarea,.doctor-btn{
+  width:100%;
+  padding:12px 14px;
+  font-size:1rem;
+  background:#fff;
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  transition:border-color .2s,box-shadow .2s;
+}
+input::placeholder,textarea::placeholder{color:var(--placeholder)}
+
+input:focus,select:focus,textarea:focus,.doctor-btn:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(108,91,255,.25);
+}
+
+/* скрыть системную стрелку select — на маке / win она разная */
+select{
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='2' fill='none' fill-rule='evenodd' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  background-size:12px 8px;
+}
+
+/* --- кастомный селект врача --- */
+.doctor-select{position:relative}
+.doctor-btn{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  cursor:pointer;
+  background:#fff;
+}
+.doctor-btn img{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;
+}
+.arrow{
+  width:12px;height:8px;
+  background:url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;
+}
+.doctor-list{
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;right:0;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  list-style:none;
+  max-height:260px;
+  overflow-y:auto;
+  z-index:50;
+}
+.doctor-list.hidden{display:none}
+.doctor-list li{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;cursor:pointer;
+  transition:background .15s;
+}
+.doctor-list li:hover{background:#f3f4f6}
+.doctor-list img{width:38px;height:38px;border-radius:50%}
+
+/* --- BUTTON --- */
+.btn{
+  display:block;
+  width:100%;
+  padding:14px;
+  font-size:1.05rem;
+  font-weight:600;
+  border:none;
+  border-radius:var(--radius);
+  color:#fff;
+  background:linear-gradient(90deg,var(--primary) 0%,var(--primary2) 100%);
+  cursor:pointer;
+  transition:transform .2s,filter .2s;
+}
+.btn:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.05)}
+.btn:disabled{background:#cbd5e1;cursor:not-allowed;filter:none}
